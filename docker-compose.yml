@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: mannat       # Set your PostgreSQL username
+      POSTGRES_PASSWORD: mannat   # Set your PostgreSQL password
+      POSTGRES_DB: loom        # Set your PostgreSQL database name
+      POSTGRES_HOST_AUTH_METHOD: trust  # Allow access (use with caution)
+    ports:
+      - "5432:5432"                      # Map port 5432 on the host to 5432 on the container
+    volumes:
+      - pgdata:/var/lib/postgresql/data  # This is where PostgreSQL stores its data
+
+volumes:
+  pgdata:
+    driver: local                        # Use local storage to persist data
